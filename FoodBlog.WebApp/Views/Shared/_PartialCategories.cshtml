@@ -1,0 +1,24 @@
+﻿@using FoodBlog.BusinessLayer
+@using FoodBlog.Entities
+
+@{
+    CategoryManager category = new CategoryManager();
+    List<Category> categories = category.GetCategories();
+}
+
+    <div class="dropdown ct-dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Country
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <ol class="category-ol">
+                @foreach (Category item in categories)
+                {
+                    <li class="probootstrap-animate ct-animate" data-animate-effect="fadeInLeft"><a href="Home/GetCategory/@item.Id">@item.Title</a></li>
+                }
+            </ol>
+        </div>
+    </div>
+
+
+

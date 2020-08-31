@@ -1,0 +1,20 @@
+﻿@using FoodBlog.Entities
+
+@{
+    BlogUsers user = null;
+    if (Session["login"] != null)
+    {
+        user = Session["login"] as BlogUsers;
+    }
+}
+
+@if (user == null)
+{
+    <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Home/Login">Login</a></li>
+    <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Home/Register">Sign in</a></li>
+}
+else
+{
+    <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Home/ShowProfile">@user.Username</a></li>
+    <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Home/Logout">Logout</a></li>
+}

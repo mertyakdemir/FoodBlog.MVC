@@ -1,0 +1,42 @@
+﻿@using FoodBlog.Entities.ViewModels
+@model LoginViewModel
+
+@{
+    ViewBag.Title = "Login Page";
+}
+
+<link href="~/css/Login.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="row row-my">
+
+            <div class="main">
+
+                <h3>Please Log In, or <a href="#">Sign Up</a></h3>
+
+                @Html.ValidationSummary(false)
+
+                <form role="form">
+                    <div class="form-group">
+                        <label for="inputUsernameEmail">Username</label>
+                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control", id = "inputUsernameEmail", placeholder = "Username" })
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <a class="pull-right" href="#">Forgot password?</a>
+                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", id = "inputPassword", placeholder = "Password", type = "password" })
+                    </div>
+
+                    <button type="submit" class="btn btn btn-primary">
+                        Log In
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+}
+
+
