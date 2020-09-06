@@ -8,7 +8,7 @@ FoodBlog.WebApp -> Web.config
 	  <add key="MailPass" value="TestPassword"/>
 	  <add key="SiteRootUri" value="TestURI"/>
 
-	<connectionStrings>
+	  <connectionStrings>
            <add name="DatabaseContext" connectionString="Server=TestServerName\SQLEXPRESS;Database=TestDB; 
 	      Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
-        </connectionStrings>
+           </connectionStrings>
