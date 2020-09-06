@@ -1,7 +1,86 @@
-﻿
+﻿@using FoodBlog.Entities
+@model BlogUsers
 @{
     ViewBag.Title = "EditProfile";
 }
 
-<h2>EditProfile</h2>
+<link href="~/css/Login.css" rel="stylesheet" />
 
+<div class="container emp-profile">
+    @using(Html.BeginForm("EditProfile","Home", FormMethod.Post, new { enctype = "multipart/form-data"}))
+    {
+        <div class="row">
+            <div class="col-md-4 ed-img">
+                    <img src="~/images/@Model.ProfileImage" />            
+                    @Html.HiddenFor(model => model.ProfileImage)
+                    <input type="file" name="ProfileImage" id="ProfileImage" />
+              </div>
+
+            <div class="col-md-8">
+                @Html.ValidationSummary(false)
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                        <div class="row">
+                            <div class="col-md-4 laed">
+                                <label>Username</label>
+                            </div>
+                            <div class="col-md-8 ined">
+                                @Html.EditorFor(model => model.Username, new { @class = "form-control", id = "inputUsernameEmail", placeholder = "Username" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 laed">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-8 ined">
+                                @Html.EditorFor(model => model.Name, new { @class = "form-control", id = "inputUsernameEmail", placeholder = "Name" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 laed">
+                                <label>Surname</label>
+                            </div>
+                            <div class="col-md-8 ined">
+                                @Html.EditorFor(model => model.Surname, new { @class = "form-control", id = "inputUsernameEmail", placeholder = "Surname" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 laed">
+                                <label>Password</label>
+                            </div>
+                            <div class="col-md-8 ined">
+                                @Html.EditorFor(model => model.Password, new { @class = "form-control", id = "inputPassword", placeholder = "Password", type = "password" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 laed">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-8 ined">
+                                @Html.EditorFor(model => model.Email, new { @class = "form-control", id = "inputUsernameEmail", placeholder = "Email" })
+                            </div>
+                        </div>
+
+                        <div class="row">
+                                <input type="submit" value="Save" class="btn btn-success" />
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            @Html.ActionLink("Cancel", "ShowProfile", "Home", null, new { @class = "btn btn-danger" })
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -94,6 +94,7 @@ namespace FoodBlog.DAL.EntityFramework
                     {
                         Title = FakeData.TextData.GetAlphabetical(FakeData.NumberData.GetNumber(10, 30)),
                         Text = FakeData.TextData.GetSentences(FakeData.NumberData.GetNumber(1, 5)),
+                        FoodImage = "img_1.jpg",
                         IsDraft = false,
                         LikeCount = FakeData.NumberData.GetNumber(1, 10),
                         Owner = ownerFood,

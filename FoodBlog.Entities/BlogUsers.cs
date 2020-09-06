@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,21 +12,23 @@ namespace FoodBlog.Entities
     [Table("BlogUsers")]
     public class BlogUsers : EntityBase
     {
-        [StringLength(30)]
+        [DisplayName("Name"), StringLength(30, ErrorMessage = "The {0} field must be a maximum of {1} characters.")]
         public string Name { get; set; }
-        [StringLength(30)]
+        [DisplayName("Surname"), StringLength(30, ErrorMessage = "The {0} field must be a maximum of {1} characters.")]
         public string Surname { get; set; }
-        [Required, StringLength(30)]
+        [DisplayName("Username"), Required(ErrorMessage = "{0} is required"), StringLength(30, ErrorMessage = "The {0} field must be a maximum of {1} characters.")]
         public string Username { get; set; }
-        [Required, StringLength(60)]
+        [DisplayName("Email"), Required(ErrorMessage = "{0} is required"), StringLength(60, ErrorMessage = "The {0} field must be a maximum of {1} characters.")]
         public string Email { get; set; }
-        [Required, StringLength(100)]
+        [DataType(DataType.Password), DisplayName("Password"), Required(ErrorMessage = "{0} is required"), StringLength(30, ErrorMessage = "The {0} field must be a maximum of {1} characters.")]
         public string Password { get; set; }
-        [StringLength(100)]
+        [StringLength(100), ScaffoldColumn(false)]
         public string ProfileImage { get; set; }
+        [DisplayName("Is Active")]
         public bool IsActive { get; set; }
+        [DisplayName("Is Admin")]
         public bool IsAdmin { get; set; }
-        [Required]
+        [Required, ScaffoldColumn(false)]
         public Guid ActiveGuid { get; set; }
         public virtual List<Food> Foods { get; set; }
         public virtual List<Comment> Comments { get; set; }

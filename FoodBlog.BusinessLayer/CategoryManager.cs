@@ -8,19 +8,30 @@ using System.Threading.Tasks;
 
 namespace FoodBlog.BusinessLayer
 {
-    public class CategoryManager
+    public class CategoryManager : MainManager<Category>
     {
-        private Repository<Category> repo_category = new Repository<Category>();
+        //public override int Delete(Category category)
+        //{
+        //    FoodManager foodManager = new FoodManager();
+        //    LikeManager likeManager = new LikeManager();
+        //    CommentManager commentManager = new CommentManager();
 
-        public List<Category> GetCategories()
-        {
-            return repo_category.List();
-        }
+        //    foreach (Food food in category.Foods.ToList())
+        //    {
+        //        foreach (Like like in food.Likes.ToList())
+        //        {
+        //            likedManager.Delete(like);
+        //        }
 
-        public Category GetCategoryId(int id)
-        {
-            return repo_category.Find(x => x.Id == id);
-        }
+        //        foreach (Comment comment in food.Comments.ToList())
+        //        {
+        //            commentManager.Delete(comment);
+        //        }
 
+        //        foodManager.Delete(food);
+        //    }
+
+        //    return base.Delete(category);
+        //}
     }
 }

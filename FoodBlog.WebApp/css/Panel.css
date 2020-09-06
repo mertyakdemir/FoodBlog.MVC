@@ -1,0 +1,45 @@
+﻿.container {
+    width: calc(100% - 250px);
+    padding: 30px;
+    position: relative
+}
+
+@media screen and (max-width: 840px) {
+    .container {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin-right: auto;
+    }
+}
+
+.row-my {
+    height: 100vh;
+    justify-content: center;
+    align-content: center;
+}
+
+.validation-summary-errors {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #a43d47;
+    border: 1px solid #a43d47;
+}
+
+.validation-summary-errors ul {
+     color: white;
+      padding: 1rem 0px 0px 1rem;
+      list-style: none;
+}
+
+.ct-add input {
+    width: 500px;
+}
+
+.cb-panel input {
+    width: auto !important;
+}

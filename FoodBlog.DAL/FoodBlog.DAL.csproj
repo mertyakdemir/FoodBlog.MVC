@@ -58,7 +58,6 @@
     <Compile Include="EntityFramework\Repository.cs" />
     <Compile Include="EntityFramework\RepositoryBase.cs" />
     <Compile Include="EntityFramework\Initializer.cs" />
-    <Compile Include="Interface\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,8 +73,14 @@
       <Project>{bc6f3abb-7e4a-45f1-8b33-8efac564c9c8}</Project>
       <Name>FoodBlog.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FoodBlog.Main\FoodBlog.Main.csproj">
+      <Project>{ff1b5309-bf20-475c-b640-54a7eb12fca0}</Project>
+      <Name>FoodBlog.Main</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interface\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -103,6 +103,7 @@
     <Content Include="css\animate.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\icomoon.css" />
+    <Content Include="css\Panel.css" />
     <Content Include="css\Login.css" />
     <Content Include="css\open-iconic-bootstrap.min.css" />
     <Content Include="css\owl.carousel.min.css" />
@@ -118,6 +119,7 @@
     <Content Include="images\img_5.jpg" />
     <Content Include="images\profile.png" />
     <Content Include="index.html" />
+    <Content Include="js\jquery-3.5.1.min.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\imagesloaded.pkgd.min.js" />
     <Content Include="js\jquery-3.2.1.slim.min.js" />
@@ -144,12 +146,18 @@
     <Content Include="scss\style.scss" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Access\Authority.cs" />
+    <Compile Include="Access\AuthorityAdmin.cs" />
+    <Compile Include="Access\ErrorPage.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BlogUserController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserSession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\WebCommon.cs" />
   </ItemGroup>
@@ -174,6 +182,24 @@
     <Content Include="Views\Home\ActivateError.cshtml" />
     <Content Include="Views\Home\ShowProfile.cshtml" />
     <Content Include="Views\Home\EditProfile.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\BlogUser\Create.cshtml" />
+    <Content Include="Views\BlogUser\Delete.cshtml" />
+    <Content Include="Views\BlogUser\Details.cshtml" />
+    <Content Include="Views\BlogUser\Edit.cshtml" />
+    <Content Include="Views\BlogUser\Index.cshtml" />
+    <Content Include="Views\Food\Create.cshtml" />
+    <Content Include="Views\Food\Delete.cshtml" />
+    <Content Include="Views\Food\Details.cshtml" />
+    <Content Include="Views\Food\Edit.cshtml" />
+    <Content Include="Views\Food\Index.cshtml" />
+    <Content Include="Views\Home\FoodPage.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\AccessError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -183,7 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Category\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FoodBlog.BusinessLayer\FoodBlog.BusinessLayer.csproj">
@@ -197,6 +223,10 @@
     <ProjectReference Include="..\FoodBlog.Entities\FoodBlog.Entities.csproj">
       <Project>{bc6f3abb-7e4a-45f1-8b33-8efac564c9c8}</Project>
       <Name>FoodBlog.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FoodBlog.Main\FoodBlog.Main.csproj">
+      <Project>{ff1b5309-bf20-475c-b640-54a7eb12fca0}</Project>
+      <Name>FoodBlog.Main</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -16,5 +16,15 @@
 else
 {
     <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Home/ShowProfile">@user.Username</a></li>
+    <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Food/Create">Add Page</a></li>
+    <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Food/Index">My Pages</a></li>
+    <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Food/MyLikedFoods">My Favorites</a></li>
+    if (user.IsAdmin)
+    {
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Category/Create">Add Category</a></li>
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Category/Index">Categories</a></li>
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Bloguser/Index">Users</a></li>
+        <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Bloguser/Create">Add User</a></li>
+    }
     <li class="probootstrap-animate" data-animate-effect="fadeInLeft"><a href="/Home/Logout">Logout</a></li>
 }

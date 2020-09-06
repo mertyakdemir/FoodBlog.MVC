@@ -55,6 +55,8 @@
     <Compile Include="BusinessResult.cs" />
     <Compile Include="CategoryManager.cs" />
     <Compile Include="FoodManager.cs" />
+    <Compile Include="LikeManager.cs" />
+    <Compile Include="MainManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>
@@ -70,6 +72,10 @@
     <ProjectReference Include="..\FoodBlog.Entities\FoodBlog.Entities.csproj">
       <Project>{bc6f3abb-7e4a-45f1-8b33-8efac564c9c8}</Project>
       <Name>FoodBlog.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FoodBlog.Main\FoodBlog.Main.csproj">
+      <Project>{ff1b5309-bf20-475c-b640-54a7eb12fca0}</Project>
+      <Name>FoodBlog.Main</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

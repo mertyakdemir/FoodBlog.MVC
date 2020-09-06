@@ -1,0 +1,26 @@
+﻿@using FoodBlog.Entities
+@model Food
+
+@{
+    ViewBag.Title = "FoodPage";
+}
+<main role="main" class="probootstrap-main js-probootstrap-main">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-12">
+                <p class="mb-5 text-center"><img src="~/images/@Model.FoodImage" alt="Free Bootstrap 4 Template by uicookies.com" class="img-fluid"></p>
+
+                <div class="row">
+                    <div class="col-xl-8 col-lg-12 mx-auto">
+                        <h1 class="mb-5">@Model.Title</h1>
+                        <p>@Model.Text</p>
+                    </div>
+                </div>
+                <h4 class="text-center font-weight-bold text-uppercase">@Model.Owner.Username</h4>
+                <h6 class="text-center">@Model.Modified.Date.ToString("dd/MM/yyyy")</h6>
+            </div>
+        </div>
+
+    </div>
+    
+</main>

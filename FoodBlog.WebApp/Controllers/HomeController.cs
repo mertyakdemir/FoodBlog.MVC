@@ -1,6 +1,7 @@
 ﻿using FoodBlog.BusinessLayer;
 using FoodBlog.Entities;
 using FoodBlog.Entities.ViewModels;
+using FoodBlog.WebApp.Access;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,20 +11,37 @@ using System.Web.Mvc;
 
 namespace FoodBlog.WebApp.Controllers
 {
+    [ErrorPage]
     public class HomeController : Controller
     {
+        private FoodManager foodManager = new FoodManager();
+        private CategoryManager categoryManager = new CategoryManager();
+        private BlogUserManager blogUserManager = new BlogUserManager();
         // GET: Home
         public ActionResult Index()
-        {
+        {   
             // Category List with TempData
             //if( TempData["categoryGet"] != null)
             //{
             //    return View(TempData["categoryGet"] as List<Food>);
             //}
 
-            FoodManager food_m = new FoodManager();
+            return View(foodManager.ListQueryable().Where(x => x.IsDraft == false).OrderByDescending(x => x.Created).ToList());
+        }
 
-            return View(food_m.GetFoods().OrderByDescending(x => x.Created).ToList());
+        public ActionResult FoodPage(int? id)
+        {
+            if( id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Food food = foodManager.Find(x => x.Id == id);
+
+            if(food == null)
+            {
+                return HttpNotFound();
+            }
+            return View(food);
         }
 
         public ActionResult GetCategory(int? id)
@@ -33,21 +51,19 @@ namespace FoodBlog.WebApp.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            CategoryManager cm = new CategoryManager();
-            Category category = cm.GetCategoryId(id.Value);
+            Category category = categoryManager.Find(x => x.Id == id.Value);
 
             if (category == null)
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            return View("Index", category.Foods.OrderByDescending(x => x.Created).ToList());
+            return View("Index", category.Foods.Where(x => x.IsDraft == false).OrderByDescending(x => x.Created).ToList());
         }
 
         public ActionResult PopularArticles()
         {
-            FoodManager fm = new FoodManager();
-            return View("Index", fm.GetFoods().OrderByDescending(x => x.LikeCount).ToList());
+            return View("Index", foodManager.ListQueryable().OrderByDescending(x => x.LikeCount).ToList());
         }
 
         public ActionResult Login()
@@ -60,8 +76,7 @@ namespace FoodBlog.WebApp.Controllers
         {
             if(ModelState.IsValid)
             {
-                BlogUserManager _bloguser = new BlogUserManager();
-                BusinessResult<BlogUsers> _bloguserRes = _bloguser.LoginUser(model);
+                BusinessResult<BlogUsers> _bloguserRes = blogUserManager.LoginUser(model);
 
                 if(_bloguserRes.Errors.Count > 0)
                 {
@@ -91,8 +106,7 @@ namespace FoodBlog.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                BlogUserManager _bloguser = new BlogUserManager();
-                BusinessResult<BlogUsers> _bloguserRes = _bloguser.RegisterUser(model);
+                BusinessResult<BlogUsers> _bloguserRes = blogUserManager.RegisterUser(model);
 
                 if(_bloguserRes.Errors.Count > 0)
                 {
@@ -112,8 +126,7 @@ namespace FoodBlog.WebApp.Controllers
 
         public ActionResult ActivateUser(Guid id)
         {
-            BlogUserManager _blogUser = new BlogUserManager();
-            BusinessResult<BlogUsers> _result = _blogUser.ActivateUser(id);
+            BusinessResult<BlogUsers> _result = blogUserManager.ActivateUser(id);
             if(_result.Errors.Count > 0)
             {
                 TempData["errors"] = _result.Errors;
@@ -138,36 +151,92 @@ namespace FoodBlog.WebApp.Controllers
             return View();
         }
 
+        [Authority]
         public ActionResult ShowProfile()
         {
             BlogUsers user = Session["login"] as BlogUsers;
 
-            BlogUserManager _blogUserManager = new BlogUserManager();
-            BusinessResult<BlogUsers> _result = _blogUserManager.GetUser(user.Id);
+            BusinessResult<BlogUsers> _result = blogUserManager.GetUser(user.Id);
 
             if(_result.Errors.Count > 0)
             {
-
+                ModelState.AddModelError("", "Error");
             }
 
             return View(_result.Result);
         }
 
+        [Authority]
         public ActionResult EditProfile()
         {
-            return View();
+            BlogUsers user = Session["login"] as BlogUsers;
+
+            BusinessResult<BlogUsers> _result = blogUserManager.GetUser(user.Id);
+
+            if (_result.Errors.Count > 0)
+            {
+                ModelState.AddModelError("", "Error");
+            }
+
+            return View(_result.Result);
         }
 
+        [Authority]
         [HttpPost]
-        public ActionResult EditProfile(BlogUsers user)
+        public ActionResult EditProfile(BlogUsers user, HttpPostedFileBase ProfileImage)
+        {
+            ModelState.Remove("ModifiedUser");
+           if (ModelState.IsValid) 
+           {
+                if (ProfileImage != null && (ProfileImage.ContentType == "image/png" ||
+                                      ProfileImage.ContentType == "image/jpg" ||
+                                      ProfileImage.ContentType == "image/jpeg"))
+                {
+                    string filename = $"user_{user.Id}.{ProfileImage.ContentType.Split('/')[1]}";
+                    ProfileImage.SaveAs(Server.MapPath($"~/images/{filename}"));
+                    user.ProfileImage = filename;
+                }
+
+                BusinessResult<BlogUsers> _result = blogUserManager.UpdateProfile(user);
+
+                if (_result.Errors.Count > 0)
+                {
+                    ModelState.AddModelError("", "Username or Email is already taken");
+                    return View(user);
+                }
+
+                Session["login"] = _result.Result;
+
+                return RedirectToAction("ShowProfile");
+            }
+            return View(user);
+        }
+
+        [Authority]
+        public ActionResult DeleteProfile()
+        {
+            BlogUsers user = Session["login"] as BlogUsers;
+
+            BusinessResult<BlogUsers> _result = blogUserManager.DeleteUser(user.Id);
+
+            if(_result.Errors.Count > 0)
+            {
+                ModelState.AddModelError("", "Error");
+                return RedirectToAction("/Home/ShowProfile");
+            }
+ 
+            Session.Clear();
+            return RedirectToAction("Index"); ;
+        }
+
+        public ActionResult Error()
         {
             return View();
         }
 
-        public ActionResult RemoveProfile()
+        public ActionResult AccessError()
         {
             return View();
         }
-
     }
 }

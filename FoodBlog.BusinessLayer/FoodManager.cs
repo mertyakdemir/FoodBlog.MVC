@@ -8,13 +8,8 @@ using System.Threading.Tasks;
 
 namespace FoodBlog.BusinessLayer
 {
-    public class FoodManager
+    public class FoodManager : MainManager<Food>
     {
-        private Repository<Food> repo_food = new Repository<Food>();
 
-        public List<Food> GetFoods()
-        {
-            return repo_food.List();
-        } 
     }
 }

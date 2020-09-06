@@ -1,0 +1,74 @@
+﻿@model IEnumerable<FoodBlog.Entities.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    body aside {
+        display: none;
+    }
+</style>
+
+<link href="~/css/Panel.css" rel="stylesheet" />
+<div class="category-index">
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Modified)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedUser)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Modified)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedUser)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
+<div class="d-flex justify-content-center">
+    <a href="/Category/Create" class="btn btn-success">Create Category</a>
+</div>
+
+<hr />
+
+<div class="d-flex justify-content-center">
+    <a href="/" class="btn btn-success">Homepage</a>
+</div>

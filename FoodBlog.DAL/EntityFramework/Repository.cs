@@ -1,7 +1,6 @@
 ﻿using FoodBlog.Common;
-using FoodBlog.DAL;
-using FoodBlog.DAL.Interface;
 using FoodBlog.Entities;
+using FoodBlog.Main.DbAccess;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FoodBlog.DAL.EntityFramework
 {
-    public class Repository<T> : IRepository<T> where T: class
+    public class Repository<T> : IDbAccess<T> where T: class
     {
         private DatabaseContext db;
         private DbSet<T> _objectSet;
@@ -31,6 +30,11 @@ namespace FoodBlog.DAL.EntityFramework
         public List<T> List(Expression<Func<T, bool>> where)
         {
             return _objectSet.Where(where).ToList();
+        }
+
+        public IQueryable<T> ListQueryable()
+        {
+            return _objectSet.AsQueryable<T>();
         }
 
         public T Find(Expression<Func<T, bool>> where)
@@ -75,5 +79,6 @@ namespace FoodBlog.DAL.EntityFramework
         {
             return db.SaveChanges();
         }
+
     }
 }

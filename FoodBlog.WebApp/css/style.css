@@ -111,8 +111,7 @@ h1, h2, h3, h4, h5,
   .probootstrap-aside .probootstrap-aside-footer {
     font-size: 14px;
     padding-left: 30px;
-    position: absolute;
-    bottom: 20px; }
+    position: absolute; }
 
 .probootstrap-aside-social li {
   display: inline-block; }

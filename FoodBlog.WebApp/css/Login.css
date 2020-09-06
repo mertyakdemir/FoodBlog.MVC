@@ -1,10 +1,24 @@
-﻿body {
-    font-size: 12px
-}
-
-.main {
+﻿.main {
     max-width: 320px;
     margin: 0 auto;
+}
+
+.container {
+    width: calc(100% - 250px);
+    padding: 30px;
+    position: relative
+}
+
+@media screen and (max-width: 840px) {
+    .container {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        margin-right: auto;
+    }
 }
 
 .login-or {
@@ -97,6 +111,7 @@ h3 {
             opacity: 0;
             right: 0;
             top: 0;
+            height: 100%;
         }
 
 .profile-head h5 {
@@ -111,7 +126,8 @@ h3 {
     border: none;
     border-radius: 1.5rem;
     width: 100%;
-    padding: 10%;
+    padding: 1em;
+    margin: 5%;
     font-weight: 600;
     color: #6c757d;
     cursor: pointer;
@@ -152,6 +168,17 @@ h3 {
         border-bottom: 2px solid #0062cc;
  }
 
+.validation-summary-errors {
+    background-color: #a43d47;
+    border: 1px solid #a43d47;
+}
+
+.validation-summary-errors ul {
+   color: white;
+   padding: 1rem 0px 0px 1rem;
+   list-style: none;
+}
+
 .profile-work {
     padding: 14%;
     margin-top: -15%;
@@ -182,4 +209,28 @@ h3 {
 .profile-tab p {
     font-weight: 600;
     color: #0062cc;
+}
+
+.ined input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.laed {
+    display: flex;
+    align-items: center;
+}
+
+.ed-img img{
+    max-width:100%;
+}
+
+#ProfileImage {
+    margin-top: 5%;
+    font-size: 15px;
 }
