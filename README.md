@@ -9,6 +9,7 @@ FoodBlog.WebApp -> Web.config
 	  <add key="SiteRootUri" value="TestURI"/>
 
 	<connectionStrings>
-  <add name="DatabaseContext" connectionString="Server=TestServerName\SQLEXPRESS;Database=TestDB; Integrated Security=SSPI;"
-   providerName="System.Data.SqlClient" />
- </connectionStrings>
+           <add name="DatabaseContext" connectionString="Server=TestServerName\SQLEXPRESS;Database=TestDB; 
+	    Integrated Security=SSPI;"
+            providerName="System.Data.SqlClient" />
+        </connectionStrings>
