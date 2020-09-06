@@ -10,6 +10,5 @@ FoodBlog.WebApp -> Web.config
 
 	<connectionStrings>
            <add name="DatabaseContext" connectionString="Server=TestServerName\SQLEXPRESS;Database=TestDB; 
-	    Integrated Security=SSPI;"
-            providerName="System.Data.SqlClient" />
+	      Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
         </connectionStrings>
