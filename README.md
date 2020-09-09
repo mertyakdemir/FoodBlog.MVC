@@ -13,6 +13,7 @@ FoodBlog.WebApp -> Web.config
 	        Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
       </connectionStrings>
 
-[![Little red riding hood](http://i.imgur.com/7YTMFQp.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
-
+<video width="400" controls>
+  <source src="https://vimeo.com/456194038/e7b3104e64" type="video/mp4">
+</video>
 
