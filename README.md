@@ -15,7 +15,7 @@ FoodBlog.WebApp -> Web.config
       
 # VIDEO LINK      
 
-[![Imgur](http://i.imgur.com/HMSrNFch.gif)](https://vimeo.com/456194038/e7b3104e64)
+[![Imgur](https://i.imgur.com/HMSrNFc.gif)](https://vimeo.com/456194038/e7b3104e64)
 
 
 
