@@ -12,3 +12,6 @@ FoodBlog.WebApp -> Web.config
            <add name="DatabaseContext" connectionString="Server=TestServerName\SQLEXPRESS;Database=TestDB; 
 	        Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
       </connectionStrings>
+
+https://github.com/ashkan-nasirzadeh/simpleShell/blob/master/README%20assets/shell-gif.gif?raw=true
+
