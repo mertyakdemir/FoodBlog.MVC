@@ -13,7 +13,9 @@ FoodBlog.WebApp -> Web.config
 	        Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
       </connectionStrings>
 
+`
 <video width="400" controls>
   <source src="https://vimeo.com/456194038/e7b3104e64" type="video/mp4">
 </video>
+`
 
