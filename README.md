@@ -14,7 +14,7 @@ FoodBlog.WebApp -> Web.config
       </connectionStrings>
       
 
-[![](https://im6.ezgif.com/tmp/ezgif-6-8db337690cf9.gif)](https://vimeo.com/456194038/e7b3104e64)
+[![](http://i.imgur.com/7YTMFQp.png)](https://vimeo.com/456194038/e7b3104e64)
 
 
 
