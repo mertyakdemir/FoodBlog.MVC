@@ -12,3 +12,6 @@ FoodBlog.WebApp -> Web.config
            <add name="DatabaseContext" connectionString="Server=TestServerName\SQLEXPRESS;Database=TestDB; 
 	        Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
       </connectionStrings>
+
+
+[![SC2 Video](doc/SC2_youtube.PNG)](https://www.youtube.com/watch?v=--b-9HrKK6w "SC2 Mini game - Click to Watch!")
