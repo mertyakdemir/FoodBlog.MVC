@@ -13,6 +13,6 @@ FoodBlog.WebApp -> Web.config
 	        Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
       </connectionStrings>
 
-[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+[![Little red riding hood](http://i.imgur.com/7YTMFQp.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
 
 
