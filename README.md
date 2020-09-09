@@ -13,8 +13,6 @@ FoodBlog.WebApp -> Web.config
 	        Integrated Security=SSPI;" providerName="System.Data.SqlClient" />
       </connectionStrings>
 
-<video width="320" height="240" controls>
-  <source src="https://vimeo.com/456194038/e7b3104e64" type="video/mp4">
-</video>
+[![Everything Is AWESOME](http://i.imgur.com/Ot5DWAW.png)](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
 
 
