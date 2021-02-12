@@ -1,4 +1,4 @@
-# FoodBlog.MVC
+# http://www.foodblogmvc.somee.com/
 
 Please change the following fields for the project to work local environment.
 
